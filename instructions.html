@@ -718,6 +718,7 @@
         <a class="nav-item" href="#account"><span class="nav-num">6</span> Your Account</a>
         <a class="nav-item" href="#config"><span class="nav-num">7</span> Configure &amp; Launch</a>
         <a class="nav-item" href="#keybinds"><span class="nav-num">8</span> Keybinds</a>
+        <a class="nav-item" href="#multiscreenshot"><span class="nav-num">&#128247;</span> Multi-Screenshot</a>
       </div>
       <div class="nav-group">
         <div class="nav-label">After Exam</div>
@@ -1101,30 +1102,118 @@
     </div>
     <div class="kbs">
       <div class="kb"><kbd>\</kbd>
-        <div class="kd"><strong>Hide Overlay</strong> &mdash; makes the bottom-right text strip invisible</div><span
-          class="kt h">Visibility</span>
+        <div class="kd"><strong>Hide Overlay</strong> &mdash; makes the bottom-right text strip invisible</div><span class="kt h">Visibility</span>
       </div>
       <div class="kb"><kbd>'</kbd>
-        <div class="kd"><strong>Show Overlay</strong> &mdash; brings it back into view</div><span
-          class="kt h">Visibility</span>
+        <div class="kd"><strong>Show Overlay</strong> &mdash; brings it back into view</div><span class="kt h">Visibility</span>
+      </div>
+      <div class="kb" style="border-color:rgba(94,234,212,.4);background:rgba(94,234,212,.04);">
+        <kbd style="color:var(--accent2);border-color:rgba(94,234,212,.4);">;</kbd>
+        <div class="kd"><strong>Buffer Screenshot</strong> &mdash; <span style="color:var(--accent2);">NEW!</span> saves a screenshot to the queue without sending it yet. Use this when your question spans multiple screens. Press up to 5 times.</div><span class="kt ai" style="background:rgba(94,234,212,.15);color:var(--accent2);">Multi</span>
       </div>
       <div class="kb"><kbd>[</kbd>
-        <div class="kd"><strong>Ask Claude</strong> &mdash; takes a screenshot and sends it to Claude Opus for analysis
-        </div><span class="kt ai">AI</span>
+        <div class="kd"><strong>Ask Claude</strong> &mdash; if you buffered screenshots with <kbd style="font-size:.8rem;padding:.1rem .4rem;">;</kbd>, sends ALL of them at once. Otherwise just takes a fresh single screenshot.</div><span class="kt ai">AI</span>
       </div>
       <div class="kb"><kbd>]</kbd>
-        <div class="kd"><strong>Ask GPT-5.6 Sol</strong> &mdash; takes a screenshot and sends it to OpenAI</div><span
-          class="kt ai">AI</span>
+        <div class="kd"><strong>Ask GPT-5.6 Sol</strong> &mdash; same as above but sends to OpenAI. If you buffered screenshots with <kbd style="font-size:.8rem;padding:.1rem .4rem;">;</kbd>, sends ALL of them at once.</div><span class="kt ai">AI</span>
       </div>
       <div class="kb"><kbd style="font-size:.82rem;">`</kbd>
-        <div class="kd"><strong>Terminate</strong> &mdash; exits the software cleanly. <strong>Always press this when
-            you finish your exam.</strong></div><span class="kt x">Exit</span>
+        <div class="kd"><strong>Terminate</strong> &mdash; exits the software cleanly. <strong>Always press this when you finish your exam.</strong></div><span class="kt x">Exit</span>
       </div>
     </div>
     <div class="callout danger" style="margin-top:1.5rem;"><span class="callout-icon">&#128721;</span>
       <div class="ct">
         <div class="ctitle">Always exit with the backtick ` key when done</div>Don&apos;t force-close or shut down.
         Press the backtick (left of the 1 on your keyboard) &mdash; it cleans up safely before exiting.
+      </div>
+    </div>
+  </div>
+
+  <!-- ── MULTI-SCREENSHOT SECTION ── -->
+  <div class="section" id="multiscreenshot" style="margin-top:3rem;">
+    <div class="section-header">
+      <div class="snum t" style="font-size:1.2rem;">&#128247;</div>
+      <div>
+        <h2>Multi-Screenshot Mode <span style="font-size:.75rem;font-weight:600;background:rgba(94,234,212,.15);color:var(--accent2);border:1px solid rgba(94,234,212,.3);padding:.15rem .55rem;border-radius:999px;letter-spacing:.06em;text-transform:uppercase;vertical-align:middle;">NEW</span></h2>
+        <div class="section-sub">For questions that are too long to fit in one screenshot</div>
+      </div>
+    </div>
+
+    <div class="callout info"><span class="callout-icon">&#128161;</span>
+      <div class="ct">
+        <div class="ctitle">When do you use this?</div>
+        Some exam questions are very long &mdash; you need to <strong>scroll down</strong> to see all the answer choices. One screenshot won&apos;t capture everything. Multi-Screenshot lets you take <strong>2&ndash;5 screenshots</strong> and send them all to the AI at the same time so it sees the full question.
+      </div>
+    </div>
+
+    <h3 style="margin:2rem 0 1rem;font-size:1rem;font-weight:700;color:var(--text);">&#128221; Step-by-step: How to use it</h3>
+    <div class="steps">
+      <div class="step">
+        <div class="sb">1</div>
+        <div class="step-body">
+          <strong>Scroll to the TOP of the question in Bluebook</strong>
+          <p>Make sure the beginning of the question is visible on screen.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="sb">2</div>
+        <div class="step-body">
+          <strong>Press <kbd>;</kbd> (semicolon) &mdash; do NOT press [ or ] yet</strong>
+          <p>The overlay will say <span class="ic">Buffered: 1 screenshot</span>. This means it saved that screenshot but did <em>not</em> send it anywhere yet. You&apos;re just collecting them.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="sb">3</div>
+        <div class="step-body">
+          <strong>Scroll down to reveal more of the question, then press <kbd>;</kbd> again</strong>
+          <p>The overlay will say <span class="ic">Buffered: 2 screenshots</span>. Keep repeating this for each part of the question you need to capture. <strong>Maximum: 5 screenshots.</strong></p>
+          <p style="margin-top:.5rem;">When you hit 5, the overlay says <span class="ic">5 max screenshots</span> &mdash; that&apos;s the limit, stop pressing <kbd>;</kbd>.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="sb">4</div>
+        <div class="step-body">
+          <strong>Once you&apos;ve captured everything, press <kbd>[</kbd> for Claude or <kbd>]</kbd> for GPT</strong>
+          <p>This sends <strong>all your buffered screenshots at once</strong> to the AI. The AI sees every screenshot together and gives you one answer based on the full picture.</p>
+          <p style="margin-top:.5rem;">After sending, the buffer is cleared automatically &mdash; you&apos;re ready to start fresh for the next question.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="callout warn" style="margin-top:1.5rem;"><span class="callout-icon">&#9888;&#65039;</span>
+      <div class="ct">
+        <div class="ctitle">Important: pressing [ or ] WITHOUT using ; first works normally</div>
+        If you <strong>did not</strong> press <kbd>;</kbd> at all, pressing <kbd>[</kbd> or <kbd>]</kbd> just does the normal single-screenshot mode. Nothing changes for regular questions that fit in one screen. You only use <kbd>;</kbd> when you need to scroll.
+      </div>
+    </div>
+
+    <div class="callout tip"><span class="callout-icon">&#128161;</span>
+      <div class="ct">
+        <div class="ctitle">Quick memory trick</div>
+        <strong>; = save/buffer it &nbsp;&nbsp;|&nbsp;&nbsp; [ or ] = send them all</strong><br />
+        Think of <kbd>;</kbd> like putting screenshots in a shopping cart, and <kbd>[</kbd>/<kbd>]</kbd> as hitting checkout.
+      </div>
+    </div>
+
+    <!-- Visual keybind summary card -->
+    <div style="margin-top:2rem;padding:1.5rem;background:var(--surface);border:1px solid rgba(94,234,212,.25);border-radius:14px;">
+      <div style="font-size:.75rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--accent2);margin-bottom:1rem;">&#128247; Multi-Screenshot Quick Reference</div>
+      <div style="display:grid;gap:.75rem;">
+        <div style="display:flex;align-items:center;gap:1rem;">
+          <kbd style="min-width:44px;text-align:center;color:var(--accent2);border-color:rgba(94,234,212,.4);">;</kbd>
+          <div style="font-size:.9rem;"><strong style="color:var(--text);">Buffer a screenshot</strong> <span style="color:var(--muted);">— press once per screen section. Overlay counts: &ldquo;Buffered: 1 screenshot&rdquo;, &ldquo;Buffered: 2 screenshots&rdquo;, etc.</span></div>
+        </div>
+        <div style="display:flex;align-items:center;gap:1rem;">
+          <div style="display:flex;gap:.4rem;">
+            <kbd style="min-width:44px;text-align:center;">[</kbd>
+            <kbd style="min-width:44px;text-align:center;">]</kbd>
+          </div>
+          <div style="font-size:.9rem;"><strong style="color:var(--text);">Send all buffered screenshots</strong> <span style="color:var(--muted);">— <kbd style="font-size:.78rem;padding:.1rem .35rem;">[</kbd> sends to Claude, <kbd style="font-size:.78rem;padding:.1rem .35rem;">]</kbd> sends to GPT. Buffer clears after sending.</span></div>
+        </div>
+        <div style="display:flex;align-items:center;gap:1rem;padding:.75rem 1rem;background:rgba(245,158,11,.07);border:1px solid rgba(245,158,11,.2);border-radius:8px;">
+          <span style="font-size:1.2rem;flex-shrink:0;">&#9888;&#65039;</span>
+          <div style="font-size:.85rem;color:#fcd34d;"><strong>Limit: 5 screenshots maximum.</strong> Overlay shows &ldquo;5 max screenshots&rdquo; when you hit the cap. Just press <kbd style="font-size:.78rem;padding:.1rem .35rem;">[</kbd> or <kbd style="font-size:.78rem;padding:.1rem .35rem;">]</kbd> to send what you have.</div>
+        </div>
       </div>
     </div>
   </div>
