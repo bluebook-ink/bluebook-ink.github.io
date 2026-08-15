@@ -46,6 +46,7 @@
   <div class="info-box" id="infoBox">
     <div class="row"><span class="lbl">Email</span><span id="infoEmail">—</span></div>
     <div class="row"><span class="lbl">Role</span><span id="infoRole">—</span></div>
+    <div class="row"><span class="lbl">Subscription</span><span id="infoTag">—</span></div>
     <div class="row"><span class="lbl">Status</span><span id="infoStatus">—</span></div>
     <button class="logout" onclick="doLogout()">Sign Out</button>
   </div>
@@ -73,13 +74,27 @@ async function showUser(session) {
   const email = session.user.email;
   document.getElementById('infoEmail').textContent = email;
 
-  // Call check_license() RPC
-  const { data, error } = await sb.rpc('check_license');
-  let role = null;
-  if (!error && data) role = data;
+  // Fetch role + tag in parallel
+  const [licRes, tagRes] = await Promise.all([
+    sb.rpc('check_license'),
+    sb.rpc('check_tag'),
+  ]);
+  let role = (!licRes.error && licRes.data) ? licRes.data : null;
+  let tag  = (!tagRes.error && tagRes.data) ? String(tagRes.data).trim() : null;
 
   const roleEl   = document.getElementById('infoRole');
   const statusEl = document.getElementById('infoStatus');
+  const tagEl    = document.getElementById('infoTag');
+
+  // Subscription (tag)
+  if (tag) {
+    const tagColors = { SAT: '#f59e0b', ACT: '#ef4444' };
+    const tc = tagColors[tag] || '#a78bfa';
+    tagEl.innerHTML = '<span style="display:inline-flex;align-items:center;gap:.3rem;padding:.15rem .45rem;border-radius:4px;font-size:12px;font-weight:700;background:' + tc + '22;color:' + tc + ';border:1px solid ' + tc + '44">' + tag + '</span>';
+  } else {
+    tagEl.textContent = '—';
+    tagEl.style.color = '#666';
+  }
 
   if (!role) {
     roleEl.textContent   = 'No license';
