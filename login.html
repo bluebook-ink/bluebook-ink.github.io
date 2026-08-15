@@ -86,15 +86,18 @@ async function showUser(session) {
   const statusEl = document.getElementById('infoStatus');
   const tagEl    = document.getElementById('infoTag');
 
-  // Subscription (tag)
-  if (tag) {
-    const tagColors = { SAT: '#f59e0b', ACT: '#ef4444' };
-    const tc = tagColors[tag] || '#a78bfa';
-    tagEl.innerHTML = '<span style="display:inline-flex;align-items:center;gap:.3rem;padding:.15rem .45rem;border-radius:4px;font-size:12px;font-weight:700;background:' + tc + '22;color:' + tc + ';border:1px solid ' + tc + '44">' + tag + '</span>';
+  // Subscription (multi-tag) — check_tag returns comma-separated e.g. "SAT,ACT"
+  const tagColors = { NONE: '#64748b', SAT: '#f59e0b', ACT: '#ef4444' };
+  if (tag && tag !== 'NONE') {
+    const parts = tag.split(',').map(t => t.trim()).filter(Boolean);
+    tagEl.innerHTML = parts.map(t => {
+      const tc = tagColors[t] || '#a78bfa';
+      return `<span style="display:inline-flex;align-items:center;gap:.25rem;padding:.15rem .45rem;border-radius:4px;font-size:12px;font-weight:700;background:${tc}22;color:${tc};border:1px solid ${tc}44"><span style="width:6px;height:6px;border-radius:50%;background:${tc};"></span>${t}</span>`;
+    }).join('<span style="font-size:10px;color:#475569;margin:0 2px">+</span>');
   } else {
-    tagEl.textContent = '—';
-    tagEl.style.color = '#666';
+    tagEl.innerHTML = '<span style="font-size:12px;color:#64748b;border:1px dashed #334155;padding:.15rem .45rem;border-radius:4px;">NONE</span>';
   }
+
 
   if (!role) {
     roleEl.textContent   = 'No license';
